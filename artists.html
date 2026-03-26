@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Artists – Your Label</title>
+  <title>Artists – Xtreme Recordz</title>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -26,30 +26,46 @@
     .page-top { height: var(--nav-h); }
 
     .page-hero { padding: 100px 40px 80px; background: var(--dark); border-bottom: 1px solid var(--border); }
-    .page-hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(64px, 10vw, 130px); letter-spacing: 0.03em; line-height: 0.9; text-transform: lowercase; }
+    .page-hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px, 7vw, 80px); letter-spacing: 0.03em; line-height: 0.9; text-transform: lowercase; }
     .page-hero h1 span { color: var(--red); }
 
     /* ARTISTS GRID */
-    .artists-section { padding: 80px 40px; background: #000; }
-    .artists-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2px; background: var(--border); }
-    .artist-card { background: #000; overflow: hidden; cursor: pointer; position: relative; }
-    .artist-card-photo { aspect-ratio: 3/4; overflow: hidden; position: relative; }
-    .artist-card-photo img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%); transition: transform .5s ease, filter .4s ease; }
-    .artist-card:hover .artist-card-photo img { transform: scale(1.06); filter: grayscale(0); }
-    .artist-card-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 50%);
-      display: flex; flex-direction: column; justify-content: flex-end;
-      padding: 28px;
-      opacity: 0; transition: opacity .3s;
+    .artists-section { padding: 60px 40px 48px; background: #000; }
+    .artists-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+    .artist-card { position: relative; overflow: hidden; cursor: pointer; background: #111; aspect-ratio: 3/4; }
+    .artist-card img { width: 100%; height: 100%; object-fit: cover; object-position: top; filter: grayscale(15%); transition: transform .5s ease, filter .3s ease; }
+    .artist-card:hover img { transform: scale(1.05); filter: grayscale(0); }
+    .artist-card-name {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 48px 16px 16px;
+      background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+      font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.06em; color: #fff;
+      transition: color .2s;
     }
-    .artist-card:hover .artist-card-overlay { opacity: 1; }
-    .artist-card-name-overlay { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 0.04em; line-height: 1; }
-    .artist-card-genre { font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--red); margin-top: 6px; }
-    .artist-card-info { padding: 20px 20px 24px; }
-    .artist-card-name { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 0.04em; line-height: 1; margin-bottom: 4px; transition: color .2s; }
     .artist-card:hover .artist-card-name { color: var(--red); }
-    .artist-card-tag { font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #555; }
+
+    /* BIO SECTIONS */
+    .artist-bio-section { padding: 80px 40px; border-bottom: 1px solid var(--border); display: none; }
+    .artist-bio-section.open { display: block; }
+    .artist-bio-section:nth-child(odd) { background: #000; }
+    .artist-bio-section:nth-child(even) { background: var(--dark); }
+    .artist-bio-inner { display: grid; grid-template-columns: 360px 1fr; gap: 60px; align-items: start; max-width: 1100px; }
+    .artist-bio-photo { width: 100%; aspect-ratio: 3/4; overflow: hidden; }
+    .artist-bio-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+    .artist-bio-label { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--red); margin-bottom: 10px; }
+    .artist-bio-name { font-family: 'Bebas Neue', sans-serif; font-size: clamp(44px, 6vw, 80px); letter-spacing: 0.03em; line-height: 0.9; margin-bottom: 6px; }
+    .artist-bio-genre { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #555; margin-bottom: 28px; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+    .artist-bio-text p { color: #999; font-size: 14px; line-height: 1.9; margin-bottom: 14px; }
+    .artist-signed { display: inline-block; margin-top: 24px; font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #fff; border: 1px solid var(--red); padding: 8px 16px; }
+    .close-bio { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 32px; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #555; cursor: pointer; transition: color .2s; }
+    .close-bio:hover { color: #fff; }
+
+    @media (max-width: 900px) { .artist-bio-inner { grid-template-columns: 1fr; gap: 32px; } .artist-bio-photo { aspect-ratio: 4/3; } }
+    @media (max-width: 768px) {
+      .artists-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+      .artists-section { padding: 40px 20px; }
+      .artist-bio-section { padding: 48px 20px; }
+    }
 
     footer { background: var(--dark); border-top: 1px solid var(--border); padding: 40px 40px 32px; }
     .footer-logo-text { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.06em; color: #fff; opacity: 0.5; margin-bottom: 32px; display: block; }
@@ -96,7 +112,7 @@
 </head>
 <body>
   <header>
-    <a href="index.html" class="logo"><span class="logo-text">YOUR LABEL</span></a>
+    <a href="index.html" class="logo" style="display:flex;align-items:center;gap:10px;"><img src="logo.png" alt="Xtreme Recordz" style="height:40px;width:auto;" /><span style="font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:0.08em;color:#fff;white-space:nowrap;">Xtreme Recordz</span></a>
     <nav>
       <ul>
         <li><a href="shop.html">Shop</a></li>
@@ -120,44 +136,36 @@
     <h1>our <span>artists</span></h1>
   </div>
 
-  <!-- ARTIST BIO STYLES -->
-  <style>
-    .artist-bio-section { padding: 80px 40px; border-bottom: 1px solid var(--border); }
-    .artist-bio-section:nth-child(odd) { background: #000; }
-    .artist-bio-section:nth-child(even) { background: var(--dark); }
-    .artist-bio-inner { display: grid; grid-template-columns: 380px 1fr; gap: 64px; align-items: start; max-width: 1200px; }
-    .artist-bio-section:nth-child(even) .artist-bio-inner { direction: rtl; }
-    .artist-bio-section:nth-child(even) .artist-bio-inner > * { direction: ltr; }
-    .artist-bio-photo { width: 100%; aspect-ratio: 3/4; overflow: hidden; position: relative; }
-    .artist-bio-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
-    .artist-bio-label { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--red); margin-bottom: 12px; }
-    .artist-bio-name { font-family: 'Bebas Neue', sans-serif; font-size: clamp(48px, 6vw, 88px); letter-spacing: 0.03em; line-height: 0.9; margin-bottom: 8px; }
-    .artist-bio-genre { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #666; margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
-    .artist-bio-text p { color: #999; font-size: 14px; line-height: 1.9; margin-bottom: 16px; }
-    .artist-bio-text p:last-child { margin-bottom: 0; }
-    .artist-signed { display: inline-block; margin-top: 28px; font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #fff; border: 1px solid var(--red); padding: 8px 18px; }
-    @media (max-width: 900px) {
-      .artist-bio-inner { grid-template-columns: 1fr; gap: 32px; }
-      .artist-bio-section:nth-child(even) .artist-bio-inner { direction: ltr; }
-      .artist-bio-photo { aspect-ratio: 4/3; }
-    }
-    @media (max-width: 768px) {
-      .artist-bio-section { padding: 60px 20px; }
-    }
-  </style>
+  <!-- ARTIST GRID -->
+  <div class="artists-section">
+    <div class="artists-grid">
 
-  <!-- XALOR -->
-  <div class="artist-bio-section" id="xalor">
+      <a class="artist-card" href="#" onclick="openBio('xalor'); return false;">
+        <img src="xalor.png" alt="Xalor" loading="lazy" />
+        <div class="artist-card-name">Xalor</div>
+      </a>
+
+      <a class="artist-card" href="#" onclick="openBio('chrizkingx'); return false;">
+        <img src="chrizkingx.png" alt="Chriz Kingx" loading="lazy" />
+        <div class="artist-card-name">Chriz Kingx</div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- XALOR BIO -->
+  <div class="artist-bio-section" id="bio-xalor">
+    <span class="close-bio" onclick="closeBio('xalor')">← Back to Artists</span>
     <div class="artist-bio-inner">
       <div class="artist-bio-photo">
         <img src="xalor.png" alt="Xalor" />
       </div>
-      <div class="artist-bio-content">
+      <div>
         <div class="artist-bio-label">Artist</div>
         <div class="artist-bio-name">Xalor</div>
         <div class="artist-bio-genre">Afro-Fusion · Street</div>
         <div class="artist-bio-text">
-          <p>Xalor, born Gideon Ugonna Henry, is a Nigerian artist emerging from Aba South, Abia State, carving out a distinct lane within the evolving African music scene.</p>
+          <p>Xalor, born Gideon Ugonna Henry, is a Nigerian artist signed to <strong style="color:#fff;">Xtreme Recordz</strong>, emerging from Aba South, Abia State, carving out a distinct lane within the evolving African music scene.</p>
           <p>Born on 22 March 2005 in Aba, Nigeria, his sound is rooted in Afro-fusion, infused with street-inspired rhythms that reflect both the realities and aspirations of his generation.</p>
           <p>Raised in the culturally rich and industrious city of Aba, Xalor draws strong influence from his environment, translating its energy, hustle, and resilience into his music.</p>
           <p>His style blends infectious melodies with introspective lyricism, creating records that are both engaging and emotionally grounded.</p>
@@ -166,23 +174,23 @@
           <p>With a growing presence and a clear artistic direction, he continues to build his brand while expanding his reach beyond local boundaries.</p>
           <p>As he evolves, Xalor stands as a promising voice of a new generation, representing Aba with ambition, creativity, and global intent.</p>
         </div>
-        <span class="artist-signed">Signed to Xtreme Recordz</span>
       </div>
     </div>
   </div>
 
-  <!-- CHRIZ KINGX -->
-  <div class="artist-bio-section" id="chrizkingx">
+  <!-- CHRIZ KINGX BIO -->
+  <div class="artist-bio-section" id="bio-chrizkingx">
+    <span class="close-bio" onclick="closeBio('chrizkingx')">← Back to Artists</span>
     <div class="artist-bio-inner">
       <div class="artist-bio-photo">
         <img src="chrizkingx.png" alt="Chriz Kingx" />
       </div>
-      <div class="artist-bio-content">
+      <div>
         <div class="artist-bio-label">Artist</div>
         <div class="artist-bio-name">Chriz Kingx</div>
         <div class="artist-bio-genre">Afrobeats · Trap · Hip-Hop · Dancehall</div>
         <div class="artist-bio-text">
-          <p>Paul Christian Chibuifeniile, professionally known as CHRIZ KINGX, is a Nigerian artist, singer, and songwriter.</p>
+          <p>Paul Christian Chibuifeniile, professionally known as CHRIZ KINGX, is a Nigerian artist, singer, and songwriter, signed to <strong style="color:#fff;">Xtreme Recordz</strong>.</p>
           <p>Born on 11 September 2005 in Lagos, Nigeria, and originally from Anambra State, CHRIZ KINGX draws influence from both the vibrant energy of Lagos and the cultural depth of his roots.</p>
           <p>His music is shaped by real-life experiences, emotion, and ambition, reflecting a journey of growth, resilience, and self-expression.</p>
           <p>Blending Afrobeats with elements of trap, hip hop, dancehall, reggae, and pop, he delivers a versatile and boundary-pushing sound that sets him apart within the new wave of Nigerian artists.</p>
@@ -191,55 +199,17 @@
           <p>His work is defined by melodic richness, relatable narratives, and a fearless approach to translating life experiences into music.</p>
           <p>As he prepares to release his debut single, CHRIZ KINGX stands as one of the promising voices of Nigeria's new generation, driven by purpose, passion, and a clear artistic vision.</p>
         </div>
-        <span class="artist-signed">Signed to Xtreme Recordz</span>
       </div>
     </div>
   </div>
 
-  <!-- GRID THUMBNAILS (top of page) -->
-  <div class="artists-section" style="padding-bottom:0;">
-    <div class="artists-grid">
-
-      <a class="artist-card" href="#xalor">
-        <div class="artist-card-photo">
-          <img src="xalor.png" alt="Xalor" loading="lazy" />
-          <div class="artist-card-overlay">
-            <div class="artist-card-name-overlay">Xalor</div>
-            <div class="artist-card-genre">Afro-Fusion</div>
-          </div>
-        </div>
-        <div class="artist-card-info">
-          <div class="artist-card-name">Xalor</div>
-          <div class="artist-card-tag">Afro-Fusion · Xtreme Recordz</div>
-        </div>
-      </a>
-
-      <a class="artist-card" href="#chrizkingx">
-        <div class="artist-card-photo">
-          <img src="chrizkingx.png" alt="Chriz Kingx" loading="lazy" />
-          <div class="artist-card-overlay">
-            <div class="artist-card-name-overlay">Chriz Kingx</div>
-            <div class="artist-card-genre">Afrobeats · Trap</div>
-          </div>
-        </div>
-        <div class="artist-card-info">
-          <div class="artist-card-name">Chriz Kingx</div>
-          <div class="artist-card-tag">Afrobeats · Xtreme Recordz</div>
-        </div>
-      </a>
-
-    </div>
-  </div>
-
-
-
   <footer>
-    <span class="footer-logo-text">YOUR LABEL</span>
+    <a href="index.html"><img src="logo.png" alt="Xtreme Recordz" style="height:60px;width:auto;opacity:0.9;margin-bottom:24px;display:block;" /></a>
     <div class="footer-links">
       <a href="/privacy">Privacy Policy</a>
       <a href="/terms">Terms &amp; Conditions</a>
     </div>
-    <p class="footer-copy">© 2025 Your Label Name</p>
+    <p class="footer-copy">© 2026 Xtreme Recordz. All Rights Reserved.</p>
   </footer>
 
   <script>
@@ -247,6 +217,22 @@
     window.addEventListener('scroll', () => {
       document.querySelector('header').style.background = window.scrollY > 10 ? 'rgba(0,0,0,0.98)' : 'rgba(0,0,0,0.92)';
     });
+    function openBio(id) {
+      // Close all bios first
+      document.querySelectorAll('.artist-bio-section').forEach(el => el.classList.remove('open'));
+      const bio = document.getElementById('bio-' + id);
+      if (bio) {
+        bio.classList.add('open');
+        setTimeout(() => bio.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+      }
+    }
+    function closeBio(id) {
+      const bio = document.getElementById('bio-' + id);
+      if (bio) {
+        bio.classList.remove('open');
+        document.querySelector('.artists-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
   </script>
 
   <!-- ══ SOCIAL MEDIA BAR ════════════════════════════════════ -->
