@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shop – Your Label</title>
+  <title>Artists – Your Label</title>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -25,37 +25,31 @@
     .mobile-nav a { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.10em; color: #fff; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
     .page-top { height: var(--nav-h); }
 
-    /* SHOP HERO BANNER */
-    .shop-banner { position: relative; height: 55vh; min-height: 340px; overflow: hidden; }
-    .shop-banner img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.5); }
-    .shop-banner-text { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 60px 40px; }
-    .shop-banner-text h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(64px, 10vw, 130px); letter-spacing: 0.03em; line-height: 0.9; text-transform: lowercase; }
-    .shop-banner-text h1 span { color: var(--red); }
-    .shop-banner-text p { max-width: 500px; color: #ccc; font-size: 14px; margin-top: 20px; }
+    .page-hero { padding: 100px 40px 80px; background: var(--dark); border-bottom: 1px solid var(--border); }
+    .page-hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(64px, 10vw, 130px); letter-spacing: 0.03em; line-height: 0.9; text-transform: lowercase; }
+    .page-hero h1 span { color: var(--red); }
 
-    /* FILTERS */
-    .shop-controls { padding: 32px 40px; background: #000; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); flex-wrap: wrap; gap: 16px; }
-    .filter-group { display: flex; gap: 12px; flex-wrap: wrap; }
-    .filter-btn { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 8px 18px; border: 1px solid var(--border); color: #666; cursor: pointer; background: none; transition: .2s; }
-    .filter-btn:hover, .filter-btn.active { border-color: #fff; color: #fff; }
-    .sort-select { background: none; border: 1px solid var(--border); color: #666; font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 8px 16px; cursor: pointer; outline: none; -webkit-appearance: none; }
-    .sort-select option { background: #111; color: #fff; }
-
-    /* PRODUCTS GRID */
-    .shop-grid-wrap { padding: 48px 40px 80px; background: #000; }
-    .shop-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 32px; }
-    .product-card { cursor: pointer; }
-    .product-card-image { aspect-ratio: 1; background: #0d0d0d; overflow: hidden; position: relative; margin-bottom: 16px; }
-    .product-card-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
-    .product-card:hover .product-card-image img { transform: scale(1.04); }
-    .product-badge { position: absolute; top: 12px; left: 12px; background: var(--red); color: #fff; font-size: 9px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; padding: 4px 10px; }
-    .product-card-add { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.9); color: #fff; font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; padding: 14px; text-align: center; transform: translateY(100%); transition: transform .25s ease; }
-    .product-card:hover .product-card-add { transform: translateY(0); }
-    .product-artist { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #666; margin-bottom: 4px; }
-    .product-name { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 8px; transition: color .2s; }
-    .product-card:hover .product-name { color: var(--red); }
-    .product-price { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.04em; }
-    .product-price .original { text-decoration: line-through; color: #444; font-size: 16px; margin-right: 8px; }
+    /* ARTISTS GRID */
+    .artists-section { padding: 80px 40px; background: #000; }
+    .artists-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2px; background: var(--border); }
+    .artist-card { background: #000; overflow: hidden; cursor: pointer; position: relative; }
+    .artist-card-photo { aspect-ratio: 3/4; overflow: hidden; position: relative; }
+    .artist-card-photo img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%); transition: transform .5s ease, filter .4s ease; }
+    .artist-card:hover .artist-card-photo img { transform: scale(1.06); filter: grayscale(0); }
+    .artist-card-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 50%);
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 28px;
+      opacity: 0; transition: opacity .3s;
+    }
+    .artist-card:hover .artist-card-overlay { opacity: 1; }
+    .artist-card-name-overlay { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 0.04em; line-height: 1; }
+    .artist-card-genre { font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--red); margin-top: 6px; }
+    .artist-card-info { padding: 20px 20px 24px; }
+    .artist-card-name { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 0.04em; line-height: 1; margin-bottom: 4px; transition: color .2s; }
+    .artist-card:hover .artist-card-name { color: var(--red); }
+    .artist-card-tag { font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #555; }
 
     footer { background: var(--dark); border-top: 1px solid var(--border); padding: 40px 40px 32px; }
     .footer-logo-text { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.06em; color: #fff; opacity: 0.5; margin-bottom: 32px; display: block; }
@@ -66,9 +60,9 @@
 
     @media (max-width: 768px) {
       header { padding: 0 20px; } nav ul { display: none; } .hamburger { display: flex; }
-      .shop-banner-text, .shop-controls, .shop-grid-wrap { padding-left: 20px; padding-right: 20px; }
+      .page-hero, .artists-section { padding-left: 20px; padding-right: 20px; }
       footer { padding: 32px 20px; }
-      .shop-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+      .artists-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
     /* ── SOCIAL MEDIA BAR (fixed bottom) ─────────────────────── */
@@ -105,7 +99,7 @@
     <a href="index.html" class="logo"><span class="logo-text">YOUR LABEL</span></a>
     <nav>
       <ul>
-        <li><a href="shop.html" class="active">Shop</a></li>
+        <li><a href="shop.html">Shop</a></li>
         <li><a href="about.html">About Us</a></li>
         <li><a href="services.html">Our Services</a></li>
         <li><a href="careers.html">Careers</a></li>
@@ -121,101 +115,126 @@
   </div>
   <div class="page-top"></div>
 
-  <!-- BANNER -->
-  <div class="shop-banner">
-    <!-- SWAP: <img src="assets/shop-banner.jpg" alt="Shop" /> -->
-    <img src="https://placehold.co/1440x800/0a0a0a/1a1a1a?text=Shop+Banner" alt="Shop" />
-    <div class="shop-banner-text">
-      <h1>the <span>shop</span></h1>
-      <p>Official merch, vinyl, and exclusive drops from your favourite artists.</p><!-- SWAP -->
-    </div>
+  <div class="page-hero">
+    <h1>our <span>artists</span></h1>
   </div>
 
-  <!-- CONTROLS -->
-  <div class="shop-controls">
-    <div class="filter-group">
-      <button class="filter-btn active">All</button>
-      <!-- SWAP: Add/remove category filters -->
-      <button class="filter-btn">Clothing</button>
-      <button class="filter-btn">Vinyl</button>
-      <button class="filter-btn">Accessories</button>
-      <button class="filter-btn">Bundles</button>
-    </div>
-    <select class="sort-select">
-      <option>Sort: Newest</option>
-      <option>Sort: Price Low–High</option>
-      <option>Sort: Price High–Low</option>
-    </select>
-  </div>
+  <div class="artists-section">
+    <div class="artists-grid">
 
-  <!-- PRODUCTS -->
-  <div class="shop-grid-wrap">
-    <div class="shop-grid">
-
-      <!-- SWAP: Duplicate .product-card for each product -->
-      <div class="product-card">
-        <div class="product-card-image">
-          <!-- SWAP: <img src="assets/product-1.jpg" alt="Product Name" /> -->
-          <img src="https://placehold.co/600x600/111/1a1a1a?text=Product+1" alt="Product" loading="lazy" />
-          <span class="product-badge">New</span><!-- SWAP or remove badge -->
-          <div class="product-card-add">Add to Cart</div>
+      <!-- SWAP: Duplicate .artist-card for each artist -->
+      <a class="artist-card" href="#">
+        <div class="artist-card-photo">
+          <!-- SWAP: <img src="assets/artist-1.jpg" alt="Artist Name" /> -->
+          <img src="https://placehold.co/600x800/111/1a1a1a?text=Artist+1" alt="Artist One" loading="lazy" />
+          <div class="artist-card-overlay">
+            <div class="artist-card-name-overlay">Artist One</div><!-- SWAP -->
+            <div class="artist-card-genre">Afrobeats</div><!-- SWAP genre -->
+          </div>
         </div>
-        <div class="product-artist">Artist Name</div><!-- SWAP -->
-        <div class="product-name">Product Name</div><!-- SWAP -->
-        <div class="product-price">$35.00</div><!-- SWAP -->
-      </div>
-
-      <div class="product-card">
-        <div class="product-card-image">
-          <img src="https://placehold.co/600x600/111/1a1a1a?text=Product+2" alt="Product" loading="lazy" />
-          <div class="product-card-add">Add to Cart</div>
+        <div class="artist-card-info">
+          <div class="artist-card-name">Artist One</div><!-- SWAP -->
+          <div class="artist-card-tag">Afrobeats</div><!-- SWAP genre -->
         </div>
-        <div class="product-artist">Artist Name</div>
-        <div class="product-name">Product Name</div>
-        <div class="product-price">$45.00</div>
-      </div>
+      </a>
 
-      <div class="product-card">
-        <div class="product-card-image">
-          <img src="https://placehold.co/600x600/111/1a1a1a?text=Product+3" alt="Product" loading="lazy" />
-          <span class="product-badge">Sale</span>
-          <div class="product-card-add">Add to Cart</div>
+      <a class="artist-card" href="#">
+        <div class="artist-card-photo">
+          <img src="https://placehold.co/600x800/111/1a1a1a?text=Artist+2" alt="Artist Two" loading="lazy" />
+          <div class="artist-card-overlay">
+            <div class="artist-card-name-overlay">Artist Two</div>
+            <div class="artist-card-genre">R&amp;B</div>
+          </div>
         </div>
-        <div class="product-artist">Artist Name</div>
-        <div class="product-name">Product Name</div>
-        <div class="product-price"><span class="original">$50.00</span>$30.00</div>
-      </div>
+        <div class="artist-card-info">
+          <div class="artist-card-name">Artist Two</div>
+          <div class="artist-card-tag">R&amp;B</div>
+        </div>
+      </a>
 
-      <div class="product-card">
-        <div class="product-card-image">
-          <img src="https://placehold.co/600x600/111/1a1a1a?text=Product+4" alt="Product" loading="lazy" />
-          <div class="product-card-add">Add to Cart</div>
+      <a class="artist-card" href="#">
+        <div class="artist-card-photo">
+          <img src="https://placehold.co/600x800/111/1a1a1a?text=Artist+3" alt="Artist Three" loading="lazy" />
+          <div class="artist-card-overlay">
+            <div class="artist-card-name-overlay">Artist Three</div>
+            <div class="artist-card-genre">Hip-Hop</div>
+          </div>
         </div>
-        <div class="product-artist">Artist Name</div>
-        <div class="product-name">Product Name</div>
-        <div class="product-price">$28.00</div>
-      </div>
+        <div class="artist-card-info">
+          <div class="artist-card-name">Artist Three</div>
+          <div class="artist-card-tag">Hip-Hop</div>
+        </div>
+      </a>
 
-      <div class="product-card">
-        <div class="product-card-image">
-          <img src="https://placehold.co/600x600/111/1a1a1a?text=Product+5" alt="Product" loading="lazy" />
-          <span class="product-badge">Limited</span>
-          <div class="product-card-add">Add to Cart</div>
+      <a class="artist-card" href="#">
+        <div class="artist-card-photo">
+          <img src="https://placehold.co/600x800/111/1a1a1a?text=Artist+4" alt="Artist Four" loading="lazy" />
+          <div class="artist-card-overlay">
+            <div class="artist-card-name-overlay">Artist Four</div>
+            <div class="artist-card-genre">Pop</div>
+          </div>
         </div>
-        <div class="product-artist">Artist Name</div>
-        <div class="product-name">Product Name</div>
-        <div class="product-price">$120.00</div>
-      </div>
+        <div class="artist-card-info">
+          <div class="artist-card-name">Artist Four</div>
+          <div class="artist-card-tag">Pop</div>
+        </div>
+      </a>
 
-      <div class="product-card">
-        <div class="product-card-image">
-          <img src="https://placehold.co/600x600/111/1a1a1a?text=Product+6" alt="Product" loading="lazy" />
-          <div class="product-card-add">Add to Cart</div>
+      <a class="artist-card" href="#">
+        <div class="artist-card-photo">
+          <img src="https://placehold.co/600x800/111/1a1a1a?text=Artist+5" alt="Artist Five" loading="lazy" />
+          <div class="artist-card-overlay">
+            <div class="artist-card-name-overlay">Artist Five</div>
+            <div class="artist-card-genre">Afrobeats</div>
+          </div>
         </div>
-        <div class="product-artist">Artist Name</div>
-        <div class="product-name">Product Name</div>
-        <div class="product-price">$22.00</div>
-      </div>
+        <div class="artist-card-info">
+          <div class="artist-card-name">Artist Five</div>
+          <div class="artist-card-tag">Afrobeats</div>
+        </div>
+      </a>
+
+      <a class="artist-card" href="#">
+        <div class="artist-card-photo">
+          <img src="https://placehold.co/600x800/111/1a1a1a?text=Artist+6" alt="Artist Six" loading="lazy" />
+          <div class="artist-card-overlay">
+            <div class="artist-card-name-overlay">Artist Six</div>
+            <div class="artist-card-genre">Soul</div>
+          </div>
+        </div>
+        <div class="artist-card-info">
+          <div class="artist-card-name">Artist Six</div>
+          <div class="artist-card-tag">Soul</div>
+        </div>
+      </a>
+
+      <a class="artist-card" href="#">
+        <div class="artist-card-photo">
+          <img src="https://placehold.co/600x800/111/1a1a1a?text=Artist+7" alt="Artist Seven" loading="lazy" />
+          <div class="artist-card-overlay">
+            <div class="artist-card-name-overlay">Artist Seven</div>
+            <div class="artist-card-genre">Rap</div>
+          </div>
+        </div>
+        <div class="artist-card-info">
+          <div class="artist-card-name">Artist Seven</div>
+          <div class="artist-card-tag">Rap</div>
+        </div>
+      </a>
+
+      <a class="artist-card" href="#">
+        <div class="artist-card-photo">
+          <img src="https://placehold.co/600x800/111/1a1a1a?text=Artist+8" alt="Artist Eight" loading="lazy" />
+          <div class="artist-card-overlay">
+            <div class="artist-card-name-overlay">Artist Eight</div>
+            <div class="artist-card-genre">Alternative</div>
+          </div>
+        </div>
+        <div class="artist-card-info">
+          <div class="artist-card-name">Artist Eight</div>
+          <div class="artist-card-tag">Alternative</div>
+        </div>
+      </a>
 
     </div>
   </div>
@@ -233,12 +252,6 @@
     function toggleMobileNav() { document.getElementById('mobileNav').classList.toggle('open'); }
     window.addEventListener('scroll', () => {
       document.querySelector('header').style.background = window.scrollY > 10 ? 'rgba(0,0,0,0.98)' : 'rgba(0,0,0,0.92)';
-    });
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-      });
     });
   </script>
 
