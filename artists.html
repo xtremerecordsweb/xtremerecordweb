@@ -108,6 +108,17 @@
     .social-bar .sb-wa { background: #25D366; }
     .social-bar .sb-li { background: #0A66C2; }
     body { padding-bottom: 60px; }
+
+    /* Artist social icons */
+    .artist-socials { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
+    .artist-socials a {
+      display: flex; align-items: center; justify-content: center;
+      width: 44px; height: 44px; border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.04);
+      transition: background .2s, border-color .2s, transform .2s;
+    }
+    .artist-socials a:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.4); transform: translateY(-2px); }
+    .artist-socials a svg { width: 18px; height: 18px; fill: #fff; }
   </style>
 </head>
 <body>
@@ -150,6 +161,11 @@
         <div class="artist-card-name">Chriz Kingx</div>
       </a>
 
+      <a class="artist-card" href="#" onclick="openBio('diego'); return false;">
+        <img src="diego.png" alt="Diego" loading="lazy" />
+        <div class="artist-card-name">Diego</div>
+      </a>
+
     </div>
   </div>
 
@@ -173,6 +189,10 @@
           <p>Whether delivering smooth, melodic records or high-energy street anthems, Xalor connects naturally with listeners through authenticity and storytelling.</p>
           <p>With a growing presence and a clear artistic direction, he continues to build his brand while expanding his reach beyond local boundaries.</p>
           <p>As he evolves, Xalor stands as a promising voice of a new generation, representing Aba with ambition, creativity, and global intent.</p>
+        </div>
+        <div class="artist-socials">
+          <a href="https://x.com/R0dlixx" target="_blank" rel="noopener" aria-label="X / Twitter"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="https://www.tiktok.com/@_xalor_0" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 0 0-6.13 6.33 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/></svg></a>
         </div>
       </div>
     </div>
@@ -198,6 +218,38 @@
           <p>Recognised for his strong songwriting ability, his music balances raw honesty with confident delivery, creating records that resonate both emotionally and sonically.</p>
           <p>His work is defined by melodic richness, relatable narratives, and a fearless approach to translating life experiences into music.</p>
           <p>As he prepares to release his debut single, CHRIZ KINGX stands as one of the promising voices of Nigeria's new generation, driven by purpose, passion, and a clear artistic vision.</p>
+        </div>
+        <div class="artist-socials">
+          <a href="https://www.instagram.com/chrizkingx?igsh=ZHZ5YjJmd3FwYWo1" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85 0 3.2-.01 3.58-.07 4.85-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07-3.2 0-3.58-.01-4.85-.07-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12c0-3.2.01-3.58.07-4.85C2.38 3.85 3.9 2.31 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 2.7.27.27 2.7.07 7.05.01 8.33 0 8.74 0 12c0 3.26.01 3.67.07 4.95.2 4.36 2.62 6.78 6.98 6.98C8.33 23.99 8.74 24 12 24c3.26 0 3.67-.01 4.95-.07 4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95 0-3.26-.01-3.67-.07-4.95C23.73 2.7 21.3.27 16.95.07 15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32A6.16 6.16 0 0 0 12 5.84zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></svg></a>
+          <a href="https://www.tiktok.com/@chrizkingx?_r=1&_t=ZS-94sGb3sZpXZ" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 0 0-6.13 6.33 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/></svg></a>
+          <a href="https://www.facebook.com/share/18ZFFZyAwS/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.95.93-1.95 1.87v2.28h3.32l-.53 3.49h-2.79V24C19.61 23.1 24 18.1 24 12.07z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIEGO BIO -->
+  <div class="artist-bio-section" id="bio-diego">
+    <span class="close-bio" onclick="closeBio('diego')">← Back to Artists</span>
+    <div class="artist-bio-inner">
+      <div class="artist-bio-photo">
+        <img src="diego.png" alt="Diego" />
+      </div>
+      <div>
+        <div class="artist-bio-label">Artist</div>
+        <div class="artist-bio-name">Diego</div>
+        <div class="artist-bio-genre">Afrobeats · Soul · Cinematic</div>
+        <div class="artist-bio-text">
+          <p>Chinemerem Victor Anyaogu, professionally known as Diego, is a Nigerian Afrobeats artist, singer, and songwriter signed to <strong style="color:#fff;">Xtreme Recordz</strong>.</p>
+          <p>Born on 24 January 2006 in Agege, Lagos, and originally from Ihiala in Anambra State, Diego's sound is deeply influenced by the cultural energy and rhythm of Lagos.</p>
+          <p>Blending contemporary Afrobeats with soulful melodies and cinematic songwriting, he has developed a distinct artistic identity rooted in emotion, storytelling, and musicality.</p>
+          <p>A multi-instrumentalist, Diego approaches music with a strong sense of composition and versatility, allowing him to craft records that are both sonically rich and personally expressive.</p>
+          <p>His work is marked by melodic depth and relatable narratives, positioning him as one of the emerging voices within Nigeria's evolving music landscape.</p>
+          <p>With a growing catalogue and a clear artistic direction, Diego continues to establish himself as a promising and dynamic talent in Afrobeats.</p>
+        </div>
+        <div class="artist-socials">
+          <a href="https://www.instagram.com/diegomusiq?igsh=MXJ0aTNzNWFjczloZQ==" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85 0 3.2-.01 3.58-.07 4.85-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07-3.2 0-3.58-.01-4.85-.07-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12c0-3.2.01-3.58.07-4.85C2.38 3.85 3.9 2.31 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 2.7.27.27 2.7.07 7.05.01 8.33 0 8.74 0 12c0 3.26.01 3.67.07 4.95.2 4.36 2.62 6.78 6.98 6.98C8.33 23.99 8.74 24 12 24c3.26 0 3.67-.01 4.95-.07 4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95 0-3.26-.01-3.67-.07-4.95C23.73 2.7 21.3.27 16.95.07 15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32A6.16 6.16 0 0 0 12 5.84zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></svg></a>
+          <a href="https://x.com/NotYourBoyDiego" target="_blank" rel="noopener" aria-label="X / Twitter"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
         </div>
       </div>
     </div>
