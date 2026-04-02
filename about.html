@@ -36,15 +36,8 @@
     .about-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; padding: 80px 40px; background: #000; border-bottom: 1px solid var(--border); align-items: center; }
     .about-intro-text h2 { font-family: 'Bebas Neue', sans-serif; font-size: 40px; letter-spacing: 0.05em; margin-bottom: 24px; }
     .about-intro-text p { color: #aaa; line-height: 1.8; margin-bottom: 16px; font-size: 15px; }
-    .about-intro-image { aspect-ratio: 4/3; background: #111; overflow: hidden; }
-    .about-intro-image img { width: 100%; height: 100%; object-fit: cover; }
-
-    /* STATS */
-    .stats { display: grid; grid-template-columns: repeat(4, 1fr); padding: 80px 40px; background: var(--dark); border-bottom: 1px solid var(--border); gap: 1px; }
-    .stat { padding: 40px; border-right: 1px solid var(--border); text-align: center; }
-    .stat:last-child { border-right: none; }
-    .stat-number { font-family: 'Bebas Neue', sans-serif; font-size: 72px; color: var(--red); line-height: 1; }
-    .stat-label { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #666; margin-top: 8px; }
+    .about-logo { display: flex; align-items: center; justify-content: center; background: #0a0a0a; border: 1px solid var(--border); padding: 48px; }
+    .about-logo img { max-width: 280px; width: 100%; height: auto; }
 
     /* MISSION */
     .mission { padding: 80px 40px; background: #000; border-bottom: 1px solid var(--border); max-width: 900px; }
@@ -54,13 +47,22 @@
     /* TEAM */
     .team { padding: 80px 40px; background: var(--mid); border-bottom: 1px solid var(--border); }
     .team h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px, 5vw, 70px); letter-spacing: 0.04em; text-transform: lowercase; margin-bottom: 48px; }
-    .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 32px; }
-    .team-card { }
-    .team-card-photo { aspect-ratio: 3/4; background: #1a1a1a; overflow: hidden; margin-bottom: 16px; }
-    .team-card-photo img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(30%); transition: filter .3s; }
-    .team-card:hover .team-card-photo img { filter: grayscale(0); }
-    .team-card-name { font-size: 14px; font-weight: 700; letter-spacing: 0.06em; margin-bottom: 4px; }
-    .team-card-role { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #666; }
+    .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 32px; }
+    .team-card { cursor: pointer; }
+    .team-card-photo { aspect-ratio: 3/4; background: #1a1a1a; overflow: hidden; margin-bottom: 16px; position: relative; }
+    .team-card-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; filter: grayscale(20%); transition: filter .3s, transform .4s; }
+    .team-card:hover .team-card-photo img { filter: grayscale(0); transform: scale(1.03); }
+    .team-card-hint { position: absolute; bottom: 12px; right: 12px; background: var(--red); color: #fff; font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 5px 10px; }
+    .team-card-name { font-size: 16px; font-weight: 700; letter-spacing: 0.06em; margin-bottom: 4px; }
+    .team-card-role { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--red); }
+
+    /* BIO DROPDOWN */
+    .team-bio { display: none; background: #0a0a0a; border: 1px solid var(--border); border-top: 2px solid var(--red); padding: 32px; margin-top: 16px; }
+    .team-bio.open { display: block; }
+    .team-bio p { color: #999; font-size: 14px; line-height: 1.9; margin-bottom: 14px; }
+    .team-bio p:last-child { margin-bottom: 0; }
+    .bio-close { display: inline-flex; align-items: center; gap: 6px; margin-top: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #555; cursor: pointer; transition: color .2s; }
+    .bio-close:hover { color: #fff; }
 
     /* FOOTER */
     footer { background: var(--dark); border-top: 1px solid var(--border); padding: 40px 40px 32px; }
@@ -72,16 +74,13 @@
 
     @media (max-width: 900px) {
       .about-intro { grid-template-columns: 1fr; gap: 40px; }
-      .stats { grid-template-columns: repeat(2, 1fr); }
-      .stat { border-right: none; border-bottom: 1px solid var(--border); }
     }
     @media (max-width: 768px) {
       header { padding: 0 20px; }
       nav ul { display: none; }
       .hamburger { display: flex; }
-      .page-hero, section, .about-intro, .stats, .mission, .team { padding-left: 20px; padding-right: 20px; }
+      .page-hero, section, .about-intro, .mission, .team { padding-left: 20px; padding-right: 20px; }
       footer { padding: 32px 20px; }
-      .stats { grid-template-columns: repeat(2, 1fr); }
     }
 
     /* ── SOCIAL MEDIA BAR (fixed bottom) ─────────────────────── */
@@ -140,33 +139,22 @@
     <h1>about <span>us</span></h1>
   </div>
 
-  <!-- INTRO -->
+  <!-- WHO WE ARE -->
   <div class="about-intro">
     <div class="about-intro-text">
       <h2>Who We Are</h2>
-      <!-- SWAP: Replace with your label's story -->
-      <p>Founded with a singular vision, Your Label has grown into one of the most influential forces in contemporary music. We find, develop, and launch artists who define the sound of their generation.</p>
-      <p>Our roster spans genres and continents, united by a shared commitment to artistic integrity and cultural relevance. We don't just release music — we build legacies.</p>
+      <p>Xtreme Recordz is an independent record label dedicated to discovering, developing, and promoting exceptional musical talent. Founded with a passion for creativity and authenticity, the label serves as a platform for artists to express their unique voices while connecting with global audiences.</p>
+      <p>With a focus on innovation and quality sound, Xtreme Recordz works across multiple genres, supporting artists from production to distribution. The label is committed to nurturing talent, building strong artist identities, and delivering music that resonates with listeners worldwide.</p>
+      <p>Driven by a vision to redefine the music industry, Xtreme Recordz combines artistic excellence with strategic growth, creating opportunities for emerging and established artists alike. Through collaborations, digital platforms, and live performances, the label continues to expand its influence and impact in the entertainment space.</p>
     </div>
-    <div class="about-intro-image">
-      <!-- SWAP: <img src="assets/about-photo.jpg" alt="About Us" /> -->
-      <img src="https://placehold.co/800x600/111/222?text=About+Photo" alt="About Us" />
+    <div class="about-logo">
+      <img src="logo.png" alt="Xtreme Recordz" />
     </div>
-  </div>
-
-  <!-- STATS -->
-  <div class="stats">
-    <!-- SWAP: Replace numbers with your own milestones -->
-    <div class="stat"><div class="stat-number">12+</div><div class="stat-label">Years Active</div></div>
-    <div class="stat"><div class="stat-number">50+</div><div class="stat-label">Artists Signed</div></div>
-    <div class="stat"><div class="stat-number">200+</div><div class="stat-label">Releases</div></div>
-    <div class="stat"><div class="stat-number">1B+</div><div class="stat-label">Streams</div></div>
   </div>
 
   <!-- MISSION -->
   <div class="mission">
     <div class="section-label">Our Mission</div>
-    <!-- SWAP: Replace with your mission statement -->
     <blockquote>"To discover extraordinary talent, nurture authentic artistry, and deliver music that moves the world."</blockquote>
   </div>
 
@@ -174,30 +162,25 @@
   <div class="team">
     <h2>our team</h2>
     <div class="team-grid">
-      <!-- SWAP: Duplicate cards for each team member -->
-      <div class="team-card">
-        <div class="team-card-photo">
-          <!-- <img src="assets/team-1.jpg" alt="Name" /> -->
-          <img src="https://placehold.co/400x530/111/222?text=Photo" alt="Team Member" />
+
+      <div>
+        <div class="team-card" onclick="toggleBio('belgic')">
+          <div class="team-card-photo">
+            <img src="belgic.jpg" alt="Belgic – Founder & CEO" />
+            <span class="team-card-hint">View Bio</span>
+          </div>
+          <div class="team-card-name">Benjamin Anyanwu</div>
+          <div class="team-card-role">Founder &amp; CEO — BELGIC</div>
         </div>
-        <div class="team-card-name">Full Name</div><!-- SWAP -->
-        <div class="team-card-role">Founder & CEO</div><!-- SWAP -->
+        <div class="team-bio" id="bio-belgic">
+          <p>Benjamin Anyanwu, professionally known as BELGIC, is a Nigerian music producer, creative entrepreneur, and the CEO and founder of Xtreme Records. Born on April 25, 1999, in Imo State, Nigeria, BELGIC has built a reputation for his passion, versatility, and dedication to quality sound.</p>
+          <p>A graduate of Theatre and Film Studies from Nnamdi Azikiwe University (UNIZIK), BELGIC combines his academic background in storytelling and performance with his natural talent for music production. His work spans across multiple genres, reflecting his ability to create unique melodies and dynamic sounds that resonate with diverse audiences.</p>
+          <p>As the driving force behind Xtreme Records, BELGIC is committed not only to producing exceptional music but also to discovering and developing fresh, talented artists. With a keen ear for potential and a vision for global impact, he actively seeks out rising stars who are ready to take their music careers to the next level.</p>
+          <p>Known for his creativity, consistency, and passion for excellence, BELGIC continues to push boundaries in the music industry, positioning himself and his label as a growing force in the global music scene.</p>
+          <span class="bio-close" onclick="toggleBio('belgic')">✕ Close</span>
+        </div>
       </div>
-      <div class="team-card">
-        <div class="team-card-photo"><img src="https://placehold.co/400x530/111/222?text=Photo" alt="Team Member" /></div>
-        <div class="team-card-name">Full Name</div>
-        <div class="team-card-role">A&R Director</div>
-      </div>
-      <div class="team-card">
-        <div class="team-card-photo"><img src="https://placehold.co/400x530/111/222?text=Photo" alt="Team Member" /></div>
-        <div class="team-card-name">Full Name</div>
-        <div class="team-card-role">Head of Marketing</div>
-      </div>
-      <div class="team-card">
-        <div class="team-card-photo"><img src="https://placehold.co/400x530/111/222?text=Photo" alt="Team Member" /></div>
-        <div class="team-card-name">Full Name</div>
-        <div class="team-card-role">Creative Director</div>
-      </div>
+
     </div>
   </div>
 
@@ -215,6 +198,13 @@
     window.addEventListener('scroll', () => {
       document.querySelector('header').style.background = window.scrollY > 10 ? 'rgba(0,0,0,0.98)' : 'rgba(0,0,0,0.92)';
     });
+    function toggleBio(id) {
+      const bio = document.getElementById('bio-' + id);
+      bio.classList.toggle('open');
+      if (bio.classList.contains('open')) {
+        setTimeout(() => bio.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
+      }
+    }
   </script>
 
   <!-- ══ SOCIAL MEDIA BAR ════════════════════════════════════ -->
