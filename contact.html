@@ -30,8 +30,8 @@
     .page-hero h1 span { color: var(--red); }
 
     /* CONTACT LAYOUT */
-    .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; min-height: 70vh; }
-    .contact-info { padding: 80px 40px; background: var(--dark); border-right: 1px solid var(--border); }
+    .contact-wrap { display: grid; grid-template-columns: 1fr; min-height: 40vh; }
+    .contact-info { padding: 80px 40px; background: var(--dark); }
     .contact-info h2 { font-family: 'Bebas Neue', sans-serif; font-size: 40px; letter-spacing: 0.04em; margin-bottom: 40px; }
     .contact-dept { margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid var(--border); }
     .contact-dept:last-child { border-bottom: none; margin-bottom: 0; }
@@ -137,87 +137,32 @@
   </div>
 
   <div class="contact-wrap">
-    <!-- LEFT: Contact Info -->
     <div class="contact-info">
       <h2>Reach Us</h2>
 
-      <!-- SWAP: Edit departments and email addresses -->
       <div class="contact-dept">
-        <div class="dept-label">General Enquiries</div>
-        <div class="dept-name">Info</div>
-        <a class="dept-email" href="/cdn-cgi/l/email-protection#167f787079566f7963647a7774737a3875797b"><span class="__cf_email__" data-cfemail="ed84838b82ad9482989f818c8f8881c38e8280">[email&#160;protected]</span></a><!-- SWAP -->
+        <div class="dept-label">Phone</div>
+        <div class="dept-name">Call or WhatsApp</div>
+        <a class="dept-email" href="tel:+2349159576301">+234 915 957 6301</a>
+        <br/>
+        <a class="dept-email" href="tel:+2349027561370" style="margin-top:6px;display:inline-block;">+234 902 756 1370</a>
       </div>
+
       <div class="contact-dept">
-        <div class="dept-label">A&amp;R / Music Submissions</div>
-        <div class="dept-name">A&amp;R Team</div>
-        <a class="dept-email" href="/cdn-cgi/l/email-protection#a0c1d2e0d9cfd5d2ccc1c2c5cc8ec3cfcd"><span class="__cf_email__" data-cfemail="09687b4970667c7b65686b6c65276a6664">[email&#160;protected]</span></a><!-- SWAP -->
-      </div>
-      <div class="contact-dept">
-        <div class="dept-label">Press &amp; Media</div>
-        <div class="dept-name">PR Department</div>
-        <a class="dept-email" href="/cdn-cgi/l/email-protection#09797b6c7a7a4970667c7b65686b6c65276a6664"><span class="__cf_email__" data-cfemail="addddfc8dedeedd4c2d8dfc1cccfc8c183cec2c0">[email&#160;protected]</span></a><!-- SWAP -->
-      </div>
-      <div class="contact-dept">
-        <div class="dept-label">Brand Partnerships</div>
-        <div class="dept-name">Partnerships Team</div>
-        <a class="dept-email" href="/cdn-cgi/l/email-protection#7f0f1e0d0b111a0d0c17160f0c3f06100a0d131e1d1a13511c1012"><span class="__cf_email__" data-cfemail="64140516100a0116170c0d1417241d0b111608050601084a070b09">[email&#160;protected]</span></a><!-- SWAP -->
+        <div class="dept-label">Email</div>
+        <div class="dept-name">General Enquiries</div>
+        <a class="dept-email" href="mailto:xtremerecords.org@gmail.com">xtremerecords.org@gmail.com</a>
       </div>
 
       <div class="contact-socials">
         <div class="dept-label">Follow Us</div>
         <div class="socials-list">
-          <!-- SWAP: Add your social links -->
-          <a class="social-link" href="#" target="_blank">Instagram</a>
-          <a class="social-link" href="#" target="_blank">Twitter / X</a>
-          <a class="social-link" href="#" target="_blank">YouTube</a>
-          <a class="social-link" href="#" target="_blank">TikTok</a>
+          <a class="social-link" href="https://youtube.com/@xtreme_recordz?si=MxE8X56VQ8uHttZ4" target="_blank" rel="noopener">YouTube</a>
+          <a class="social-link" href="https://www.facebook.com/share/185VxzmphX/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a>
+          <a class="social-link" href="https://www.tiktok.com/@xtreme_records" target="_blank" rel="noopener">TikTok</a>
+          <a class="social-link" href="https://chat.whatsapp.com/D4IPHkHQ7L7IAlrQC8ZFBo?mode=gi_t" target="_blank" rel="noopener">WhatsApp</a>
         </div>
       </div>
-    </div>
-
-    <!-- RIGHT: Contact Form -->
-    <div class="contact-form">
-      <h2>Send a Message</h2>
-      <!-- NOTE: This form needs a backend or service like Formspree/Netlify to submit -->
-      <!-- SWAP: action="https://formspree.io/f/YOUR_ID" -->
-      <form action="#" method="POST">
-        <div class="form-row">
-          <div class="form-group">
-            <label for="fname">First Name</label>
-            <input type="text" id="fname" name="first_name" placeholder="First name" required />
-          </div>
-          <div class="form-group">
-            <label for="lname">Last Name</label>
-            <input type="text" id="lname" name="last_name" placeholder="Last name" required />
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="email">Email Address</label>
-          <input type="email" id="email" name="email" placeholder="you@example.com" required />
-        </div>
-        <div class="form-group">
-          <label for="dept">Department</label>
-          <select id="dept" name="department">
-            <!-- SWAP: Match your departments above -->
-            <option value="">Select a department</option>
-            <option value="general">General Enquiries</option>
-            <option value="ar">A&amp;R / Music Submissions</option>
-            <option value="press">Press &amp; Media</option>
-            <option value="partnerships">Brand Partnerships</option>
-            <option value="other">Other</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="subject">Subject</label>
-          <input type="text" id="subject" name="subject" placeholder="What's this about?" />
-        </div>
-        <div class="form-group">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
-        </div>
-        <button class="btn-submit" type="submit">Send Message</button>
-        <p class="form-note">We aim to respond to all enquiries within 3–5 working days.</p><!-- SWAP -->
-      </form>
     </div>
   </div>
 
